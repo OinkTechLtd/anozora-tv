@@ -1,0 +1,278 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+RUTUBE SNIFFER (Other Source) — собираем потоки со всех видео
+41 канал из https://rutube.ru/feeds/live/
+Берет ПЕРВЫЙ найденный поток (dash, ts или hls) и пихает в M3U
+"""
+
+import asyncio
+import os
+import json
+import time
+from datetime import datetime
+from urllib.parse import urlparse
+
+from playwright.async_api import async_playwright
+
+# ====== НАСТРОЙКИ ======
+OUTPUT_DIR = "playlists/rutube"
+WAIT_MS = 5000
+NAV_TIMEOUT = 20000
+
+# ====== 41 КАНАЛ С RUTUBE.RU ======
+CHANNELS = {
+    "1plus16": "https://rutube.ru/live/video/99d4597cea881a27cf7dd6e65a74dade/",
+    "2x2": "https://rutube.ru/live/video/392b4686b770bae2da6bf5ac4574add5/",
+    "ru-tv": "https://rutube.ru/live/video/b1eb8e90d7e636677b3eb73b4fcbb717/",
+    "muztv": "https://rutube.ru/live/video/df6fe73494a26f74da51573fd97b9baa/",
+    "tnt": "https://rutube.ru/live/video/546602986e6a424d74d594876ddb3f04/",
+    "ntv": "https://rutube.ru/live/video/c37cd74192c6bc3d6cd6077c0c4fd686/",
+    "1tv": "https://rutube.ru/live/video/c58f502c7bb34a8fcdd976b221fca292/",
+    "russia1": "https://rutube.ru/live/video/5cd8f08283e352a19829ecb269856b8b/",
+    "matchtv": "https://rutube.ru/live/video/11bbbec75a2ceb8cf446ad16813c6eec/",
+    "5tv": "https://rutube.ru/live/video/b2b32a7d6f2323f3a113ff44b0404bf2/",
+    "kultura": "https://rutube.ru/live/video/5322070af872c4992d2d5237e2aa8809/",
+    "russia24": "https://rutube.ru/live/video/fd2c6d0222e5758dc781adc23b3f3491/",
+    "otr": "https://rutube.ru/live/video/faa934385b83f9e8a92f5484defae5fa/",
+    "tvc": "https://rutube.ru/live/video/92198c96552e3ee4a62cc1735a98ee54/",
+    "rentv": "https://rutube.ru/live/video/54395b96ad1a7b49966f46a6eee370a4/",
+    "spas": "https://rutube.ru/live/video/2bbfa9ebf9d79ade480d7281fcef1008/",
+    "sts": "https://rutube.ru/live/video/ffc110c6785e57f4c329179b555547b4/",
+    "dom": "https://rutube.ru/live/video/49848b06c0fe2dae124419ffce1a1bab/",
+    "tv3": "https://rutube.ru/live/video/7bf12d9c050f9a7ef3728db5730432ae/",
+    "friday": "https://rutube.ru/live/video/9f87a9a0cecbe773be6fddcbd93585ac/",
+    "tvzvezda": "https://rutube.ru/live/video/5ab908fccfac5bb43ef2b1e4182256b0/",
+    "mir": "https://rutube.ru/live/video/afef67d151b5a607dee1ef0aa299a52c/",
+    "tnt4": "https://rutube.ru/live/video/c801a7087e29a097192d74c270fbc6c1/",
+    "che": "https://rutube.ru/live/video/6cde7d5b8a38bbaab829c71e45f95ba7/",
+    "u": "https://rutube.ru/live/video/5c9327074e25ca86f3111d4085cbbb65/",
+    "fon-music": "https://rutube.ru/live/video/5a294ae1ed12c44c7053301fb5fa9ba0/",
+    "mir24": "https://rutube.ru/live/video/43269ba8fb179e298b1e497f557e8d2d/",
+    "voleybol": "https://rutube.ru/live/video/cc1b56aa4955a144f324ad58998513bb/",
+    "solnce": "https://rutube.ru/live/video/2dba20a8405e57935827cb5721c2b759/",
+    "solovyev": "https://rutube.ru/live/video/c9b87c0b00cfff9b37f95b9c8e4eed42/",
+    "rbk-news": "https://rutube.ru/live/video/88f6485ee28d56daf13302ac6fe3d931/",
+    "ctslove": "https://rutube.ru/live/video/32dc45cf878497abe1c9695e228f039b/",
+    "wasabi": "https://rutube.ru/live/video/ee3c34823d370bae91c0a7c1bd5b502c/",
+    "redbull": "https://rutube.ru/live/video/45b30eef1b89857182b03db2c25631d9/",
+    "kronehit": "https://rutube.ru/live/video/bc1b811349f526188c839d377913e16a/",
+    "soyuz": "https://rutube.ru/live/video/80b308e455f2aceb498e5dccd58ca050/",
+    "muzsoyuz": "https://rutube.ru/live/video/d1dff14680d4c84e27908983375f7e89/",
+    "tsargrad": "https://rutube.ru/live/video/91815da4edb167b5bd617bae490e57da/",
+    "360news": "https://rutube.ru/live/video/07beff61e617797db550cc3a5f6ad92b/",
+    "vmesterf": "https://rutube.ru/live/video/f6a6d5c955180d0d0f80c66d0b6150d3/",
+    "ohotnik": "https://rutube.ru/live/video/1da5d92af8c55b16241f1eb12a27f00c/",
+}
+
+# Мусор — аналитика и реклама
+JUNK = [
+    "stat-analytics", "mc.yandex", "counter.yadro",
+    "google-analytics", "googletagmanager", "doubleclick",
+    "yastatic.net", "bs.serving-sys", "api.adriver.ru",
+]
+
+results = {}
+
+def init_ch(ch):
+    if ch not in results:
+        results[ch] = {
+            "url": CHANNELS.get(ch),
+            "stream": None,        # Первый найденный поток
+            "type": None,
+            "all": [],             # Все потоки
+            "status": "pending"
+        }
+
+def is_junk(url):
+    return any(j in url.lower() for j in JUNK)
+
+def is_stream(url):
+    """Проверить, это ли потоковый URL"""
+    u = url.lower()
+    return any(ext in u for ext in (".m3u8", ".mpd", ".ts", ".m4s"))
+
+def get_stream_type(url):
+    """Определить тип потока"""
+    u = url.lower()
+    if ".mpd" in u:
+        return "dash"
+    elif ".m3u8" in u:
+        return "hls"
+    elif ".ts" in u:
+        return "ts"
+    elif ".m4s" in u:
+        return "m4s"
+    return "unknown"
+
+async def sniff_channel(page, ch_id, video_url):
+    """Снифить потоки с одного видео канала"""
+    init_ch(ch_id)
+    
+    if not video_url:
+        results[ch_id]["status"] = "no_url"
+        return
+    
+    first_stream_found = False
+    
+    def on_response(resp):
+        nonlocal first_stream_found
+        url = resp.url
+        if resp.status >= 400 or is_junk(url) or not is_stream(url):
+            return
+        
+        stream_type = get_stream_type(url)
+        
+        # Сохраняем ПЕРВЫЙ поток
+        if results[ch_id]["stream"] is None and not first_stream_found:
+            results[ch_id]["stream"] = url
+            results[ch_id]["type"] = stream_type
+            first_stream_found = True
+            print(f"  ⚡ [FIRST] {ch_id}: {stream_type.upper()} → {url[:90]}")
+        else:
+            # Логируем остальные только если нашли первый
+            if not first_stream_found:
+                emoji = {"dash":"📦", "hls":"📺", "ts":"🎬", "m4s":"🎬", "unknown":"📡"}
+                e = emoji.get(stream_type, "📡")
+                print(f"  {e} [{stream_type:5s}] {ch_id}: {url[:90]}")
+        
+        # Сохраняем все потоки
+        if url not in [s["url"] for s in results[ch_id]["all"]]:
+            results[ch_id]["all"].append({"url": url, "type": stream_type})
+    
+    page.on("response", on_response)
+    
+    try:
+        await page.goto(video_url, timeout=NAV_TIMEOUT, wait_until="domcontentloaded")
+        await page.wait_for_timeout(WAIT_MS)
+        results[ch_id]["status"] = "ok" if results[ch_id]["stream"] else "no_streams"
+    except Exception as e:
+        results[ch_id]["status"] = f"error: {str(e)[:40]}"
+        print(f"  ❌ {ch_id}: {str(e)[:50]}")
+    finally:
+        page.remove_listener("response", on_response)
+
+async def run():
+    global results
+    results = {}
+    
+    # Инициализируем все каналы
+    for ch_id in CHANNELS.keys():
+        init_ch(ch_id)
+    
+    async with async_playwright() as p:
+        browser = await p.chromium.launch(
+            headless=True,
+            args=["--no-sandbox", "--disable-blink-features=AutomationControlled"]
+        )
+        context = await browser.new_context(
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+            java_script_enabled=True,
+        )
+        page = await context.new_page()
+        
+        channels_list = [(ch_id, url) for ch_id, url in CHANNELS.items() if url]
+        
+        print(f"{'='*70}")
+        print(f"📡 RuTube: {len(channels_list)} каналов")
+        print(f"{'='*70}")
+        
+        for i, (ch_id, video_url) in enumerate(channels_list):
+            print(f"\n[{i+1}/{len(channels_list)}] {ch_id:15s}", end=" ", flush=True)
+            await sniff_channel(page, ch_id, video_url)
+        
+        await browser.close()
+
+def get_manifest_type(stream_type):
+    """Определить правильный тип манифеста для M3U"""
+    if stream_type == "dash":
+        return "dash"
+    else:
+        return "hls"
+
+def save():
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    
+    # M3U плейлист (только ПЕРВЫЕ потоки!)
+    m3u_path = os.path.join(OUTPUT_DIR, "rutube.m3u")
+    count = 0
+    
+    with open(m3u_path, "w", encoding="utf-8") as f:
+        f.write("#EXTM3U\n")
+        f.write(f"#SOURCE:rutube.ru\n")
+        f.write(f"#DATE:{datetime.utcnow().isoformat()}Z\n\n")
+        
+        for ch_id, data in sorted(results.items()):
+            if not data["stream"]:
+                continue
+            
+            stream_type = data["type"]
+            manifest_type = get_manifest_type(stream_type)
+            
+            f.write(f'#EXTINF:-1 group-title="RuTube",{ch_id}\n')
+            f.write(f"#EXTVLCOPT:http-referrer=https://rutube.ru/\n")
+            if manifest_type == "dash":
+                f.write(f"#KODIPROP:inputstreamaddon=inputstream.adaptive\n")
+                f.write(f"#KODIPROP:inputstream.adaptive.manifest_type=dash\n")
+            f.write(f"{data['stream']}\n\n")
+            count += 1
+    
+    # JSON со всеми потоками
+    json_path = os.path.join(OUTPUT_DIR, "streams.json")
+    clean = {}
+    for ch_id, data in results.items():
+        clean[ch_id] = {
+            "url": data["url"],
+            "first_stream": {
+                "url": data["stream"],
+                "type": data["type"]
+            } if data["stream"] else None,
+            "all_streams": data["all"],
+            "status": data["status"]
+        }
+    
+    with open(json_path, "w", encoding="utf-8") as f:
+        json.dump(clean, f, indent=2, ensure_ascii=False)
+    
+    # Текстовый отчет
+    txt_path = os.path.join(OUTPUT_DIR, "report.txt")
+    with open(txt_path, "w", encoding="utf-8") as f:
+        f.write(f"RuTube Sniffer Report (41 channels)\n")
+        f.write(f"Date: {datetime.utcnow().isoformat()}Z\n")
+        f.write(f"{'='*70}\n\n")
+        
+        ok_count = sum(1 for d in results.values() if d["stream"])
+        f.write(f"Каналов с потоками: {ok_count}/{len(results)}\n\n")
+        
+        for ch_id, data in sorted(results.items()):
+            f.write(f"[{ch_id}]\n")
+            f.write(f"  URL: {data['url']}\n")
+            f.write(f"  Status: {data['status']}\n")
+            if data["stream"]:
+                f.write(f"  First: [{data['type'].upper()}] {data['stream'][:70]}\n")
+                if data["all"]:
+                    f.write(f"  All ({len(data['all'])} streams):\n")
+                    for s in data["all"]:
+                        f.write(f"    - [{s['type']}] {s['url'][:70]}\n")
+            f.write(f"\n")
+    
+    print(f"\n{'='*70}")
+    print(f"✅ Каналов в M3U: {count}")
+    print(f"📁 M3U:    {m3u_path}")
+    print(f"📁 JSON:   {json_path}")
+    print(f"📁 Report: {txt_path}")
+    
+    return count
+
+async def main():
+    t0 = time.time()
+    print("📡 SNIFFER OTHERS (RuTube) — 41 КАНАЛ")
+    print("Берет ПЕРВЫЙ поток из плеера и пихает в M3U")
+    print("=" * 70)
+    await run()
+    count = save()
+    print(f"\n⏱️ {time.time()-t0:.0f} сек | 📺 {count} каналов в M3U")
+
+if __name__ == "__main__":
+    asyncio.run(main())
+

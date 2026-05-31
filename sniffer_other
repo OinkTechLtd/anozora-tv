@@ -1,0 +1,146 @@
+#!/usr/bin/env python3
+"""RUTUBE — 41 канал. Не грузится → 10 сек → страница канала → поток. Не нашёл → пропуск."""
+import asyncio, os, re, time
+from datetime import datetime
+from playwright.async_api import async_playwright
+
+OUTPUT_DIR = "playlists/rutube"
+WAIT_MS = 4000
+NAV_TIMEOUT = 15000
+
+CHANNELS = {
+    "1plus16":"99d4597cea881a27cf7dd6e65a74dade","2x2":"392b4686b770bae2da6bf5ac4574add5",
+    "rutv":"b1eb8e90d7e636677b3eb73b4fcbb717","muztv":"df6fe73494a26f74da51573fd97b9baa",
+    "tnt":"546602986e6a424d74d594876ddb3f04","ntv":"c37cd74192c6bc3d6cd6077c0c4fd686",
+    "1tv":"c58f502c7bb34a8fcdd976b221fca292","russia1":"5cd8f08283e352a19829ecb269856b8b",
+    "matchtv":"11bbbec75a2ceb8cf446ad16813c6eec","5tv":"b2b32a7d6f2323f3a113ff44b0404bf2",
+    "kultura":"5322070af872c4992d2d5237e2aa8809","russia24":"fd2c6d0222e5758dc781adc23b3f3491",
+    "otr":"faa934385b83f9e8a92f5484defae5fa","tvc":"92198c96552e3ee4a62cc1735a98ee54",
+    "rentv":"54395b96ad1a7b49966f46a6eee370a4","spas":"2bbfa9ebf9d79ade480d7281fcef1008",
+    "sts":"ffc110c6785e57f4c329179b555547b4","dom":"49848b06c0fe2dae124419ffce1a1bab",
+    "tv3":"7bf12d9c050f9a7ef3728db5730432ae","friday":"9f87a9a0cecbe773be6fddcbd93585ac",
+    "zvezda":"5ab908fccfac5bb43ef2b1e4182256b0","mir":"afef67d151b5a607dee1ef0aa299a52c",
+    "tnt4":"c801a7087e29a097192d74c270fbc6c1","che":"6cde7d5b8a38bbaab829c71e45f95ba7",
+    "yu":"5c9327074e25ca86f3111d4085cbbb65","fonmusic":"5a294ae1ed12c44c7053301fb5fa9ba0",
+    "mir24":"43269ba8fb179e298b1e497f557e8d2d","voleybol":"cc1b56aa4955a144f324ad58998513bb",
+    "solnce":"2dba20a8405e57935827cb5721c2b759","solovyev":"c9b87c0b00cfff9b37f95b9c8e4eed42",
+    "rbk":"88f6485ee28d56daf13302ac6fe3d931","ctslove":"32dc45cf878497abe1c9695e228f039b",
+    "wasabi":"ee3c34823d370bae91c0a7c1bd5b502c","redbull":"45b30eef1b89857182b03db2c25631d9",
+    "kronehit":"bc1b811349f526188c839d377913e16a","soyuz":"80b308e455f2aceb498e5dccd58ca050",
+    "muzsoyuz":"d1dff14680d4c84e27908983375f7e89","tsargrad":"91815da4edb167b5bd617bae490e57da",
+    "360":"07beff61e617797db550cc3a5f6ad92b","vmeste":"f6a6d5c955180d0d0f80c66d0b6150d3",
+    "ohotnik":"1da5d92af8c55b16241f1eb12a27f00c",
+}
+
+JUNK = ["mc.yandex","yastatic","google-analytics","googletagmanager","doubleclick","tns-counter"]
+results = {}
+current_ch = None
+
+def is_junk(url): return any(j in url.lower() for j in JUNK)
+def is_stream(url): return any(x in url.lower() for x in [".m3u8",".mpd",".ts",".m4s"])
+
+def classify(url):
+    u = url.lower()
+    if ".mpd" in u: return "dash"
+    if ".m3u8" in u: return "hls"
+    if ".ts" in u: return "ts"
+    if ".m4s" in u: return "m4s"
+    return "other"
+
+def clean_name(raw, ch):
+    if not raw: return ch
+    t = raw.strip()
+    for n in ["смотреть онлайн","прямой эфир","live","rutube","онлайн","бесплатно","— rutube","| rutube"]:
+        t = re.sub(n, "", t, flags=re.IGNORECASE).strip()
+    return t.strip("—|·- ") or ch
+
+async def grab(page, ch, vid):
+    global current_ch
+    current_ch = ch
+    results[ch] = {"name": ch, "streams": []}
+
+    async def on_resp(resp):
+        if current_ch != ch: return
+        url = resp.url
+        if resp.status >= 400 or is_junk(url) or not is_stream(url): return
+        entry = {"url": url, "type": classify(url)}
+        if not any(s["url"] == url for s in results[ch]["streams"]):
+            results[ch]["streams"].append(entry)
+
+    page.on("response", on_resp)
+
+    # Способ 1 — прямой эфир
+    ok = False
+    try:
+        await page.goto(f"https://rutube.ru/live/video/{vid}/", timeout=NAV_TIMEOUT, wait_until="domcontentloaded")
+        await page.wait_for_timeout(WAIT_MS)
+        ok = len(results[ch]["streams"]) > 0
+    except: pass
+
+    # Способ 2 — embed
+    if not ok:
+        try:
+            await page.goto(f"https://rutube.ru/play/embed/{vid}/", timeout=NAV_TIMEOUT, wait_until="domcontentloaded")
+            await page.wait_for_timeout(WAIT_MS)
+            ok = len(results[ch]["streams"]) > 0
+        except: pass
+
+    # Способ 3 — страница канала (ждём до 10 сек)
+    if not ok:
+        try:
+            await page.goto(f"https://rutube.ru/video/{vid}/", timeout=NAV_TIMEOUT, wait_until="domcontentloaded")
+            await page.wait_for_timeout(10000)
+            ok = len(results[ch]["streams"]) > 0
+        except: pass
+
+    # Название
+    try:
+        title = await page.title()
+        results[ch]["name"] = clean_name(title, ch)
+    except: pass
+
+    page.remove_listener("response", on_resp)
+    return ok
+
+async def main():
+    global results
+    results = {}
+    ids = list(CHANNELS.items())
+
+    async with async_playwright() as p:
+        browser = await p.chromium.launch(headless=True, args=["--no-sandbox"])
+        ctx = await browser.new_context(user_agent="Mozilla/5.0")
+        page = await ctx.new_page()
+
+        print(f"🔍 RUTUBE — {len(ids)} каналов")
+        for i, (ch, vid) in enumerate(ids):
+            print(f"[{i+1}/{len(ids)}] {ch}", end=" ", flush=True)
+            ok = await grab(page, ch, vid)
+            n = len(results[ch]["streams"])
+            if ok: print(f"✅ {n} потоков | {results[ch]['name']}")
+            else: print("❌ пропущен")
+
+        await browser.close()
+
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    m3u = os.path.join(OUTPUT_DIR, "rutube.m3u")
+    count = 0
+    with open(m3u, "w", encoding="utf-8") as f:
+        f.write(f"#EXTM3U\n#SOURCE:rutube.ru\n#DATE:{datetime.utcnow().isoformat()}Z\n\n")
+        for ch, _ in ids:
+            streams = results.get(ch, {}).get("streams", [])
+            if not streams: continue
+            s = streams[0]
+            name = results[ch].get("name", ch)
+            mtype = "dash" if s["type"] == "dash" else "hls"
+            f.write(f'#EXTINF:-1 group-title="RuTube",{name}\n')
+            f.write("#EXTVLCOPT:http-referrer=https://rutube.ru/\n")
+            if mtype == "dash":
+                f.write("#KODIPROP:inputstreamaddon=inputstream.adaptive\n")
+                f.write("#KODIPROP:inputstream.adaptive.manifest_type=dash\n")
+            f.write(f"{s['url']}\n\n")
+            count += 1
+    print(f"✅ {count}/{len(ids)} → {m3u}")
+
+if __name__ == "__main__":
+    asyncio.run(main())

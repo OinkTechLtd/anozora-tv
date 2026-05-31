@@ -1,0 +1,528 @@
+{
+  "che": {
+    "hls": [],
+    "dash": [],
+    "drm": false,
+    "hosts": [
+      "68b27.telecid.ru",
+      "dmg.digitaltarget.ru",
+      "mc.yandex.ru",
+      "media.mediavitrina.ru",
+      "player.mediavitrina.ru",
+      "static-api.mediavitrina.ru",
+      "staticmv.mediavitrina.ru",
+      "vitrina.tv",
+      "vitv.telecomid.ru",
+      "yandex.ru"
+    ],
+    "last_seen": "2026-04-27T20:41:40.574761"
+  },
+  "u": {
+    "hls": [
+      "https://edge02p.mediavitrina.ru/hls-livef5/ntv_msk/index.m3u8?token=v2.SjinooLczdoYK2hHDmht-83SmaPZP8Qb3obwk4GOZZU.n3_zjZDUQeTk9HSbi6witu4PUZU3p4wkYtJR4jdgTDY.1777927140.157caa5e67c850562ba60d3c36bf50bb",
+      "https://edge03p.mediavitrina.ru/hls-livef7/zvezda0/index.m3u8?token=v2.pXFcLzsPoMKKMJEfrbh9EOznP1mfkbul9SVxUwE8-YA.6-wRMvaRBShSmnoGRRoz7rltDsIjzNRfQ3vNOhgHsAA.1777927245.a10c930e91d6d73cf6294642ecce863a"
+    ],
+    "dash": [
+      "https://edge01d.mediavitrina.ru/dash-livef6/solntse/index.mpd?token=v2.s04PY6_tEKg55KKuLBvUvYBu_x_bb_GX5DnWEjtrgBE.BD3tHafhq17ECSQCkAWbwjwqwxFLTlAV9Eyd77mX4Bg.1777927292.82f85fd56502e840e854d9396897c2ad",
+      "https://edge02d.mediavitrina.ru/dash-livef6/yu/index.mpd?token=v2.TIHlWeLuYxtDzoI17RoNQeZlLb_iP0Ky5aMQkzgU_CE.M_8LuI2hjRGFmX3HribxH4KdTW3FhFzdYaqv0Rm_stU.1777927284.97c9275a55ef36515fcfb83bbf6b2064",
+      "https://stat-analytics.mediavitrina.ru/?event=first_play&init_before_stream_or_ad_request_msec=56&stream_or_ad_initial_buffering_msec=778&sid=d639c48b-95b1-4f96-9296-a2d435ecb824&uid=3decf288-e11b-4b5f-8c30-a70eac0224c3&db=channels_salad&version=19.17.3&player=web&event_ts=1777322485&event_ts_msec=1777322485376&client_timezone_offset_sec=0&location=https://vitrina.tv/&player_id=7957&vitrina_id=227&epg_id=131&domain=vitrina.tv&user_browser=HeadlessChrome&user_browser_ver_major=145&user_browser_ver_minor=&user_browser_ver=145.undefined&user_os=Windows&user_os_ver_major=10&user_os_ver_minor=&device=desktop&device_vendor=&device_model=&adblock=0&is_pip_mode=0&player_visibility=1&is_subtitles_mode=0&drm_system_name=&drm_request_msec=&is_fullscreen_mode=0&mode=live&cdn=edge02d.mediavitrina.ru&stream_ts=1777322464&stream_ts_msec=1777322464000&stream_format=mpd&stream_path=/dash-livef6/yu/index.mpd&programme_id=44847339&local_epg_id=131&product=web&is_web_player=1&stream_path_params=%3Ftoken%3Dv2.TIHlWeLuYxtDzoI17RoNQeZlLb_iP0Ky5aMQkzgU_CE.M_8LuI2hjRGFmX3HribxH4KdTW3FhFzdYaqv0Rm_stU.1777927284.97c9275a55ef36515fcfb83bbf6b2064&season_id=&project_id=1998793&drm=0&was_geoblocked=0",
+      "https://stat-analytics.mediavitrina.ru/?event=first_play&init_before_stream_or_ad_request_msec=66&stream_or_ad_initial_buffering_msec=940&sid=9dde5f22-6f7d-4e56-b5f2-5961c97d1dc7&uid=3decf288-e11b-4b5f-8c30-a70eac0224c3&db=channels_salad&version=19.17.3&player=web&event_ts=1777322493&event_ts_msec=1777322493548&client_timezone_offset_sec=0&location=https://vitrina.tv/&player_id=16105&vitrina_id=227&epg_id=239&domain=vitrina.tv&user_browser=HeadlessChrome&user_browser_ver_major=145&user_browser_ver_minor=&user_browser_ver=145.undefined&user_os=Windows&user_os_ver_major=10&user_os_ver_minor=&device=desktop&device_vendor=&device_model=&adblock=0&is_pip_mode=0&player_visibility=1&is_subtitles_mode=0&drm_system_name=&drm_request_msec=&is_fullscreen_mode=0&mode=live&cdn=edge01d.mediavitrina.ru&stream_ts=1777322468&stream_ts_msec=1777322468000&stream_format=mpd&stream_path=/dash-livef6/solntse/index.mpd&programme_id=44847213&local_epg_id=239&product=web&is_web_player=1&stream_path_params=%3Ftoken%3Dv2.s04PY6_tEKg55KKuLBvUvYBu_x_bb_GX5DnWEjtrgBE.BD3tHafhq17ECSQCkAWbwjwqwxFLTlAV9Eyd77mX4Bg.1777927292.82f85fd56502e840e854d9396897c2ad&season_id=&project_id=1515263&drm=0&was_geoblocked=0",
+      "https://stat-analytics.mediavitrina.ru/?event=first_play_or_ad&init_before_stream_or_ad_request_msec=56&stream_or_ad_initial_buffering_msec=245&sid=d639c48b-95b1-4f96-9296-a2d435ecb824&uid=3decf288-e11b-4b5f-8c30-a70eac0224c3&db=channels_salad&version=19.17.3&player=web&event_ts=1777322484&event_ts_msec=1777322484844&client_timezone_offset_sec=0&location=https://vitrina.tv/&player_id=7957&vitrina_id=227&epg_id=131&domain=vitrina.tv&user_browser=HeadlessChrome&user_browser_ver_major=145&user_browser_ver_minor=&user_browser_ver=145.undefined&user_os=Windows&user_os_ver_major=10&user_os_ver_minor=&device=desktop&device_vendor=&device_model=&adblock=0&is_pip_mode=0&player_visibility=1&is_subtitles_mode=0&drm_system_name=&drm_request_msec=&is_fullscreen_mode=0&mode=live&cdn=edge02d.mediavitrina.ru&stream_ts=1777322464&stream_ts_msec=1777322464000&stream_format=mpd&stream_path=/dash-livef6/yu/index.mpd&programme_id=44847339&local_epg_id=131&product=web&is_web_player=1&stream_path_params=%3Ftoken%3Dv2.TIHlWeLuYxtDzoI17RoNQeZlLb_iP0Ky5aMQkzgU_CE.M_8LuI2hjRGFmX3HribxH4KdTW3FhFzdYaqv0Rm_stU.1777927284.97c9275a55ef36515fcfb83bbf6b2064&season_id=&project_id=1998793&drm=0&was_geoblocked=0",
+      "https://stat-analytics.mediavitrina.ru/?event=first_play_or_ad&init_before_stream_or_ad_request_msec=66&stream_or_ad_initial_buffering_msec=406&sid=9dde5f22-6f7d-4e56-b5f2-5961c97d1dc7&uid=3decf288-e11b-4b5f-8c30-a70eac0224c3&db=channels_salad&version=19.17.3&player=web&event_ts=1777322493&event_ts_msec=1777322493014&client_timezone_offset_sec=0&location=https://vitrina.tv/&player_id=16105&vitrina_id=227&epg_id=239&domain=vitrina.tv&user_browser=HeadlessChrome&user_browser_ver_major=145&user_browser_ver_minor=&user_browser_ver=145.undefined&user_os=Windows&user_os_ver_major=10&user_os_ver_minor=&device=desktop&device_vendor=&device_model=&adblock=0&is_pip_mode=0&player_visibility=1&is_subtitles_mode=0&drm_system_name=&drm_request_msec=&is_fullscreen_mode=0&mode=live&cdn=edge01d.mediavitrina.ru&stream_ts=1777322468&stream_ts_msec=1777322468000&stream_format=mpd&stream_path=/dash-livef6/solntse/index.mpd&programme_id=44847213&local_epg_id=239&product=web&is_web_player=1&stream_path_params=%3Ftoken%3Dv2.s04PY6_tEKg55KKuLBvUvYBu_x_bb_GX5DnWEjtrgBE.BD3tHafhq17ECSQCkAWbwjwqwxFLTlAV9Eyd77mX4Bg.1777927292.82f85fd56502e840e854d9396897c2ad&season_id=&project_id=1515263&drm=0&was_geoblocked=0"
+    ],
+    "drm": true,
+    "hosts": [
+      "1083--3decf288-e11b-4b5f-8c30-a70eac0224c3.stbid.ru",
+      "1083--afe77dc6-d4ec-450c-bbca-c46fd6985232.stbid.ru",
+      "68b27.telecid.ru",
+      "beat.vitrinabeat.ru",
+      "bs.serving-sys.ru",
+      "counter.yadro.ru",
+      "dmg.digitaltarget.ru",
+      "edge01d.mediavitrina.ru",
+      "edge01r.mediavitrina.ru",
+      "edge02d.mediavitrina.ru",
+      "edge02p.mediavitrina.ru",
+      "edge02r.mediavitrina.ru",
+      "edge03p.mediavitrina.ru",
+      "edge03r.mediavitrina.ru",
+      "edge04p.mediavitrina.ru",
+      "edge05p.mediavitrina.ru",
+      "gateway.teleport.media",
+      "log.strm.yandex.ru",
+      "mc.yandex.ru",
+      "media.mediavitrina.ru",
+      "node-9178.nodr.app:9986",
+      "node-9233.nodr.app:9998",
+      "player.mediavitrina.ru",
+      "px971.telecid.ru",
+      "px97142949b66171592.telecid.ru",
+      "px971d77e76de871909.telecid.ru",
+      "stat-analytics.mediavitrina.ru",
+      "stat.teleport.media",
+      "static-api.mediavitrina.ru",
+      "staticmv.mediavitrina.ru",
+      "strm.yandex.ru",
+      "swarm-jub.teleport.media",
+      "tns-counter.ru",
+      "vitrina.getshop.tv",
+      "vitrina.tv",
+      "vitv.telecomid.ru",
+      "www.tns-counter.ru",
+      "yandex.ru",
+      "yastatic.net"
+    ],
+    "last_seen": "2026-04-27T20:41:48.209805"
+  },
+  "5tv": {
+    "hls": [
+      "https://edge01r.mediavitrina.ru/hls-livef7/5tv/index.m3u8?token=v2.S4ah0QEAo79qvbWP6kXc-LS0d5-gGq0blBn-29MpNRc.P0dHxQAJjrna3YI_3QEWd-SWLBogq6ElK1uzz207ePc.1777927148.d3ac5e0d3b9f4656094826dab3c05829"
+    ],
+    "dash": [],
+    "drm": true,
+    "hosts": [
+      "68b27.telecid.ru",
+      "beat.vitrinabeat.ru",
+      "counter.yadro.ru",
+      "dmg.digitaltarget.ru",
+      "edge01r.mediavitrina.ru",
+      "mc.yandex.ru",
+      "media.mediavitrina.ru",
+      "player.mediavitrina.ru",
+      "stat-analytics.mediavitrina.ru",
+      "static-api.mediavitrina.ru",
+      "staticmv.mediavitrina.ru",
+      "vitrina.tv",
+      "vitv.telecomid.ru",
+      "yandex.ru"
+    ],
+    "last_seen": "2026-04-27T20:39:16.286387"
+  },
+  "matchtv": {
+    "hls": [
+      "https://edge01d.mediavitrina.ru/hls-livef6/matchtv/index.m3u8?token=v2.zBlGnuRqbw_fQwikqHkW41d1l7DMSOEAdpDUUP4rwTA.AIM_HPZ4IrPuoAN5YmDuOkqRnhSc748ltbNHbcPQRgU.1777927132.183eff2f60a4bfc5f36cf0a337d6afef"
+    ],
+    "dash": [],
+    "drm": true,
+    "hosts": [
+      "68b27.telecid.ru",
+      "beat.vitrinabeat.ru",
+      "edge01d.mediavitrina.ru",
+      "media.mediavitrina.ru",
+      "player.mediavitrina.ru",
+      "stat-analytics.mediavitrina.ru",
+      "static-api.mediavitrina.ru",
+      "vitrina.tv",
+      "yandex.ru"
+    ],
+    "last_seen": "2026-04-27T20:39:00.282664"
+  },
+  "russia1": {
+    "hls": [
+      "https://edge02d.mediavitrina.ru/hls-livef6/russia1/index.m3u8?token=v2.6RTeEdqVtWRIWIRCvvxpKDgiIhMoF-T9LVV1SW7YkIQ.dqXg33CdRpUYKea1yQU87WpSTvX9rON8yhp9NHLZXsw.1777927124.b41071018a722c31a0dbed13e3d2a3f8"
+    ],
+    "dash": [],
+    "drm": true,
+    "hosts": [
+      "68b27.telecid.ru",
+      "beat.vitrinabeat.ru",
+      "edge02d.mediavitrina.ru",
+      "media.mediavitrina.ru",
+      "player.mediavitrina.ru",
+      "stat-analytics.mediavitrina.ru",
+      "static-api.mediavitrina.ru",
+      "staticmv.mediavitrina.ru",
+      "vitrina.tv",
+      "vitv.telecomid.ru",
+      "yandex.ru"
+    ],
+    "last_seen": "2026-04-27T20:38:52.273680"
+  },
+  "kultura": {
+    "hls": [],
+    "dash": [],
+    "drm": false,
+    "hosts": [
+      "68b27.telecid.ru",
+      "beat.vitrinabeat.ru",
+      "media.mediavitrina.ru",
+      "player.mediavitrina.ru",
+      "static-api.mediavitrina.ru",
+      "staticmv.mediavitrina.ru",
+      "vitrina.tv"
+    ],
+    "last_seen": "2026-04-27T20:39:24.293617"
+  },
+  "russia24": {
+    "hls": [
+      "https://edge01d.mediavitrina.ru/hls-livef6/russia24/index.m3u8?token=v2.hmtdte3vtRZPeFGi0G-l1VozyidKvD6Zrcac2IITclg.bjJXdEZLE2AcOa0aDlFO-G0o4X9p7OUa3T4dxmOFeog.1777927164.57ea43ea31d46a147257437afb8e090d"
+    ],
+    "dash": [],
+    "drm": true,
+    "hosts": [
+      "68b27.telecid.ru",
+      "beat.vitrinabeat.ru",
+      "edge01d.mediavitrina.ru",
+      "media.mediavitrina.ru",
+      "player.mediavitrina.ru",
+      "stat-analytics.mediavitrina.ru",
+      "static-api.mediavitrina.ru",
+      "staticmv.mediavitrina.ru",
+      "vitrina.tv",
+      "vitv.telecomid.ru",
+      "www.tns-counter.ru"
+    ],
+    "last_seen": "2026-04-27T20:39:32.313330"
+  },
+  "ntv": {
+    "hls": [
+      "https://edge02p.mediavitrina.ru/hls-livef5/ntv_msk/index.m3u8?token=v2.SjinooLczdoYK2hHDmht-83SmaPZP8Qb3obwk4GOZZU.n3_zjZDUQeTk9HSbi6witu4PUZU3p4wkYtJR4jdgTDY.1777927140.157caa5e67c850562ba60d3c36bf50bb"
+    ],
+    "dash": [],
+    "drm": true,
+    "hosts": [
+      "68b27.telecid.ru",
+      "beat.vitrinabeat.ru",
+      "dmg.digitaltarget.ru",
+      "edge02p.mediavitrina.ru",
+      "mc.yandex.ru",
+      "media.mediavitrina.ru",
+      "player.mediavitrina.ru",
+      "stat-analytics.mediavitrina.ru",
+      "static-api.mediavitrina.ru",
+      "staticmv.mediavitrina.ru",
+      "vitrina.getshop.tv",
+      "vitrina.tv",
+      "vitv.telecomid.ru",
+      "www.tns-counter.ru"
+    ],
+    "last_seen": "2026-04-27T20:40:02.601723"
+  },
+  "rentv": {
+    "hls": [],
+    "dash": [],
+    "drm": false,
+    "hosts": [
+      "68b27.telecid.ru",
+      "beat.vitrinabeat.ru",
+      "dmg.digitaltarget.ru",
+      "mc.yandex.ru",
+      "media.mediavitrina.ru",
+      "player.mediavitrina.ru",
+      "stat-analytics.mediavitrina.ru",
+      "static-api.mediavitrina.ru",
+      "staticmv.mediavitrina.ru",
+      "vitrina.getshop.tv",
+      "vitrina.tv",
+      "vitv.telecomid.ru",
+      "www.tns-counter.ru"
+    ],
+    "last_seen": "2026-04-27T20:40:02.601749"
+  },
+  "otr": {
+    "hls": [
+      "https://edge03p.mediavitrina.ru/hls-livef6/otr_0/index.m3u8?token=v2.V5pRYtNPpBD7jBZY6Owrr6_WGXuzqD1tE4bblRxiSJU.UuM5qla3wTRkOkLwyqVJAoVcaE7rfxL2Uor8wbHRT4w.1777927181.ad2977a1bf4311f33b45f5c6e3d7baeb"
+    ],
+    "dash": [],
+    "drm": true,
+    "hosts": [
+      "68b27.telecid.ru",
+      "beat.vitrinabeat.ru",
+      "edge03p.mediavitrina.ru",
+      "media.mediavitrina.ru",
+      "player.mediavitrina.ru",
+      "stat-analytics.mediavitrina.ru",
+      "static-api.mediavitrina.ru",
+      "vitrina.tv"
+    ],
+    "last_seen": "2026-04-27T20:39:48.316067"
+  },
+  "tvc": {
+    "hls": [
+      "https://edge03p.mediavitrina.ru/hls-livef6/tvc/index.m3u8?token=v2.Wyq06vr9gukYM-fXRyCM_Z5q_0_w_igs10Knzex9wak.CLspQ7TceLG_rDeB4umMOHm0UjuqOqcmSCrPs2oeMQ8.1777927188.ab95a975e2342932ad086b33277a9993"
+    ],
+    "dash": [],
+    "drm": true,
+    "hosts": [
+      "68b27.telecid.ru",
+      "beat.vitrinabeat.ru",
+      "edge03p.mediavitrina.ru",
+      "mc.yandex.ru",
+      "media.mediavitrina.ru",
+      "player.mediavitrina.ru",
+      "stat-analytics.mediavitrina.ru",
+      "static-api.mediavitrina.ru",
+      "staticmv.mediavitrina.ru",
+      "vitrina.getshop.tv",
+      "vitrina.tv",
+      "vitv.telecomid.ru",
+      "www.tns-counter.ru"
+    ],
+    "last_seen": "2026-04-27T20:39:56.351160"
+  },
+  "spas": {
+    "hls": [
+      "https://edge03r.mediavitrina.ru/hls-livef5/spas/index.m3u8?token=v2.hCiTe_oa3RQ3wEmnFgPMs0vE6LFg0Zc2JdUUn327lpM.AIZU4BD-vev73CZkX4bdUfsWqTjMdoYfcaeMZAftB30.1777927204.bbe65ae3bca67f8a109cea9fb3863aba"
+    ],
+    "dash": [],
+    "drm": true,
+    "hosts": [
+      "68b27.telecid.ru",
+      "beat.vitrinabeat.ru",
+      "edge03r.mediavitrina.ru",
+      "media.mediavitrina.ru",
+      "player.mediavitrina.ru",
+      "stat-analytics.mediavitrina.ru",
+      "static-api.mediavitrina.ru",
+      "vitrina.tv",
+      "vitv.telecomid.ru"
+    ],
+    "last_seen": "2026-04-27T20:40:12.368254"
+  },
+  "ctc": {
+    "hls": [
+      "https://edge04p.mediavitrina.ru/hls-livef5/ctc-love/index.m3u8?token=v2.HzGZ4CekC2eZBQH8sYeikMll9EtPPDT85amPnK2IzRA.I59t782qXJIRTxDRpflkqx_sm96JRsBBWT-ZyyHh-bs.1777927277.e6d05e5caaedb0b1d6edd4e8802c67d5",
+      "https://edge05p.mediavitrina.ru/hls-livef6/ctc/index.m3u8?token=v2.G4i9rXqxOVnMUas2yiT011nbfhpl0HSaGZYQhm52_vw.KH2xl5Id7JceXYBNw4Oaf1wY-m1n4FTMmTrB9eyvNvA.1777927212.6696c65e8ca30a7d3b74fce65cc24fa5"
+    ],
+    "dash": [],
+    "drm": true,
+    "hosts": [
+      "68b27.telecid.ru",
+      "beat.vitrinabeat.ru",
+      "dmg.digitaltarget.ru",
+      "edge02p.mediavitrina.ru",
+      "edge04p.mediavitrina.ru",
+      "edge05p.mediavitrina.ru",
+      "media.mediavitrina.ru",
+      "player.mediavitrina.ru",
+      "stat-analytics.mediavitrina.ru",
+      "static-api.mediavitrina.ru",
+      "staticmv.mediavitrina.ru",
+      "vitrina.getshop.tv",
+      "vitrina.tv",
+      "vitv.telecomid.ru",
+      "www.tns-counter.ru"
+    ],
+    "last_seen": "2026-04-27T20:41:24.436144"
+  },
+  "mir": {
+    "hls": [
+      "https://edge03r.mediavitrina.ru/hls-livef8/mir/index.m3u8?token=v2.rJ2n7zO--phq7zuP7GQtXl1yWaHtbb8UTsZ6HTpRfiE.yVUB3Lz0JffwKxRclKoPDuyXXCCjnwe4fJlf-4RBk5I.1777927252.22c0a9e2e0205e6c8d75566eca6afe3f"
+    ],
+    "dash": [],
+    "drm": true,
+    "hosts": [
+      "68b27.telecid.ru",
+      "beat.vitrinabeat.ru",
+      "edge03r.mediavitrina.ru",
+      "media.mediavitrina.ru",
+      "player.mediavitrina.ru",
+      "stat-analytics.mediavitrina.ru",
+      "static-api.mediavitrina.ru",
+      "vitrina.tv",
+      "vitv.telecomid.ru"
+    ],
+    "last_seen": "2026-04-27T20:41:00.414465"
+  },
+  "dom": {
+    "hls": [],
+    "dash": [
+      "https://stat-analytics.mediavitrina.ru/?event=first_play&init_before_stream_or_ad_request_msec=56&stream_or_ad_initial_buffering_msec=778&sid=d639c48b-95b1-4f96-9296-a2d435ecb824&uid=3decf288-e11b-4b5f-8c30-a70eac0224c3&db=channels_salad&version=19.17.3&player=web&event_ts=1777322485&event_ts_msec=1777322485376&client_timezone_offset_sec=0&location=https://vitrina.tv/&player_id=7957&vitrina_id=227&epg_id=131&domain=vitrina.tv&user_browser=HeadlessChrome&user_browser_ver_major=145&user_browser_ver_minor=&user_browser_ver=145.undefined&user_os=Windows&user_os_ver_major=10&user_os_ver_minor=&device=desktop&device_vendor=&device_model=&adblock=0&is_pip_mode=0&player_visibility=1&is_subtitles_mode=0&drm_system_name=&drm_request_msec=&is_fullscreen_mode=0&mode=live&cdn=edge02d.mediavitrina.ru&stream_ts=1777322464&stream_ts_msec=1777322464000&stream_format=mpd&stream_path=/dash-livef6/yu/index.mpd&programme_id=44847339&local_epg_id=131&product=web&is_web_player=1&stream_path_params=%3Ftoken%3Dv2.TIHlWeLuYxtDzoI17RoNQeZlLb_iP0Ky5aMQkzgU_CE.M_8LuI2hjRGFmX3HribxH4KdTW3FhFzdYaqv0Rm_stU.1777927284.97c9275a55ef36515fcfb83bbf6b2064&season_id=&project_id=1998793&drm=0&was_geoblocked=0",
+      "https://stat-analytics.mediavitrina.ru/?event=first_play&init_before_stream_or_ad_request_msec=66&stream_or_ad_initial_buffering_msec=940&sid=9dde5f22-6f7d-4e56-b5f2-5961c97d1dc7&uid=3decf288-e11b-4b5f-8c30-a70eac0224c3&db=channels_salad&version=19.17.3&player=web&event_ts=1777322493&event_ts_msec=1777322493548&client_timezone_offset_sec=0&location=https://vitrina.tv/&player_id=16105&vitrina_id=227&epg_id=239&domain=vitrina.tv&user_browser=HeadlessChrome&user_browser_ver_major=145&user_browser_ver_minor=&user_browser_ver=145.undefined&user_os=Windows&user_os_ver_major=10&user_os_ver_minor=&device=desktop&device_vendor=&device_model=&adblock=0&is_pip_mode=0&player_visibility=1&is_subtitles_mode=0&drm_system_name=&drm_request_msec=&is_fullscreen_mode=0&mode=live&cdn=edge01d.mediavitrina.ru&stream_ts=1777322468&stream_ts_msec=1777322468000&stream_format=mpd&stream_path=/dash-livef6/solntse/index.mpd&programme_id=44847213&local_epg_id=239&product=web&is_web_player=1&stream_path_params=%3Ftoken%3Dv2.s04PY6_tEKg55KKuLBvUvYBu_x_bb_GX5DnWEjtrgBE.BD3tHafhq17ECSQCkAWbwjwqwxFLTlAV9Eyd77mX4Bg.1777927292.82f85fd56502e840e854d9396897c2ad&season_id=&project_id=1515263&drm=0&was_geoblocked=0",
+      "https://stat-analytics.mediavitrina.ru/?event=first_play_or_ad&init_before_stream_or_ad_request_msec=56&stream_or_ad_initial_buffering_msec=245&sid=d639c48b-95b1-4f96-9296-a2d435ecb824&uid=3decf288-e11b-4b5f-8c30-a70eac0224c3&db=channels_salad&version=19.17.3&player=web&event_ts=1777322484&event_ts_msec=1777322484844&client_timezone_offset_sec=0&location=https://vitrina.tv/&player_id=7957&vitrina_id=227&epg_id=131&domain=vitrina.tv&user_browser=HeadlessChrome&user_browser_ver_major=145&user_browser_ver_minor=&user_browser_ver=145.undefined&user_os=Windows&user_os_ver_major=10&user_os_ver_minor=&device=desktop&device_vendor=&device_model=&adblock=0&is_pip_mode=0&player_visibility=1&is_subtitles_mode=0&drm_system_name=&drm_request_msec=&is_fullscreen_mode=0&mode=live&cdn=edge02d.mediavitrina.ru&stream_ts=1777322464&stream_ts_msec=1777322464000&stream_format=mpd&stream_path=/dash-livef6/yu/index.mpd&programme_id=44847339&local_epg_id=131&product=web&is_web_player=1&stream_path_params=%3Ftoken%3Dv2.TIHlWeLuYxtDzoI17RoNQeZlLb_iP0Ky5aMQkzgU_CE.M_8LuI2hjRGFmX3HribxH4KdTW3FhFzdYaqv0Rm_stU.1777927284.97c9275a55ef36515fcfb83bbf6b2064&season_id=&project_id=1998793&drm=0&was_geoblocked=0",
+      "https://stat-analytics.mediavitrina.ru/?event=first_play_or_ad&init_before_stream_or_ad_request_msec=66&stream_or_ad_initial_buffering_msec=406&sid=9dde5f22-6f7d-4e56-b5f2-5961c97d1dc7&uid=3decf288-e11b-4b5f-8c30-a70eac0224c3&db=channels_salad&version=19.17.3&player=web&event_ts=1777322493&event_ts_msec=1777322493014&client_timezone_offset_sec=0&location=https://vitrina.tv/&player_id=16105&vitrina_id=227&epg_id=239&domain=vitrina.tv&user_browser=HeadlessChrome&user_browser_ver_major=145&user_browser_ver_minor=&user_browser_ver=145.undefined&user_os=Windows&user_os_ver_major=10&user_os_ver_minor=&device=desktop&device_vendor=&device_model=&adblock=0&is_pip_mode=0&player_visibility=1&is_subtitles_mode=0&drm_system_name=&drm_request_msec=&is_fullscreen_mode=0&mode=live&cdn=edge01d.mediavitrina.ru&stream_ts=1777322468&stream_ts_msec=1777322468000&stream_format=mpd&stream_path=/dash-livef6/solntse/index.mpd&programme_id=44847213&local_epg_id=239&product=web&is_web_player=1&stream_path_params=%3Ftoken%3Dv2.s04PY6_tEKg55KKuLBvUvYBu_x_bb_GX5DnWEjtrgBE.BD3tHafhq17ECSQCkAWbwjwqwxFLTlAV9Eyd77mX4Bg.1777927292.82f85fd56502e840e854d9396897c2ad&season_id=&project_id=1515263&drm=0&was_geoblocked=0"
+    ],
+    "drm": true,
+    "hosts": [
+      "68b27.telecid.ru",
+      "beat.vitrinabeat.ru",
+      "dmg.digitaltarget.ru",
+      "edge02p.mediavitrina.ru",
+      "media.mediavitrina.ru",
+      "player.mediavitrina.ru",
+      "stat-analytics.mediavitrina.ru",
+      "static-api.mediavitrina.ru",
+      "staticmv.mediavitrina.ru",
+      "vitrina.getshop.tv",
+      "vitrina.tv",
+      "vitv.telecomid.ru",
+      "yandex.ru"
+    ],
+    "last_seen": "2026-04-27T20:41:40.800255"
+  },
+  "tv3": {
+    "hls": [
+      "https://edge05p.mediavitrina.ru/hls-livef8/tv3/index.m3u8?token=v2.SwgcABpyuvHfanWU8OdjmZ2fnQPc8q_rz8FiB7dX5DA.d1sAOOJTQ-hVepgid_57Qoe973fStrWmcMAN4paUJ8E.1777927228.ec11578193fa663648d235821b9fcc02"
+    ],
+    "dash": [],
+    "drm": true,
+    "hosts": [
+      "68b27.telecid.ru",
+      "beat.vitrinabeat.ru",
+      "edge05p.mediavitrina.ru",
+      "media.mediavitrina.ru",
+      "player.mediavitrina.ru",
+      "stat-analytics.mediavitrina.ru",
+      "static-api.mediavitrina.ru",
+      "vitrina.getshop.tv",
+      "vitrina.tv",
+      "vitv.telecomid.ru"
+    ],
+    "last_seen": "2026-04-27T20:40:36.394264"
+  },
+  "tnt": {
+    "hls": [
+      "https://edge02d.mediavitrina.ru/hls-livef8/tnt/index.m3u8?token=v2.ii600M4YcuyRoYiDJijWwNyrN_PaHvz32CX2jb1QefY.ix9Tq1y1-tHPP2Ujel13DeQ4jPyEKTyYmdvV1zr4XCw.1777927260.c34002e81630d447c7a7f6fc38fb824d"
+    ],
+    "dash": [],
+    "drm": true,
+    "hosts": [
+      "68b27.telecid.ru",
+      "beat.vitrinabeat.ru",
+      "edge02d.mediavitrina.ru",
+      "media.mediavitrina.ru",
+      "player.mediavitrina.ru",
+      "stat-analytics.mediavitrina.ru",
+      "static-api.mediavitrina.ru",
+      "vitrina.getshop.tv",
+      "vitrina.tv",
+      "vitv.telecomid.ru",
+      "www.tns-counter.ru"
+    ],
+    "last_seen": "2026-04-27T20:41:40.774929"
+  },
+  "muztv": {
+    "hls": [
+      "https://edge01r.mediavitrina.ru/hls-livef5/muztv/index.m3u8?token=v2.bBDII2kyqUKnNteeBkvtBxleKoy8CaLLtmVRUf7NAhc.d1KvRd4C185c9jfaYGYNZpC3BDHWcqlMSnwftPbjyHM.1777927268.2645282715f098d5071076a2bf3e4b29"
+    ],
+    "dash": [],
+    "drm": true,
+    "hosts": [
+      "68b27.telecid.ru",
+      "beat.vitrinabeat.ru",
+      "edge01r.mediavitrina.ru",
+      "media.mediavitrina.ru",
+      "player.mediavitrina.ru",
+      "stat-analytics.mediavitrina.ru",
+      "static-api.mediavitrina.ru",
+      "staticmv.mediavitrina.ru",
+      "vitrina.getshop.tv",
+      "vitrina.tv",
+      "vitv.telecomid.ru"
+    ],
+    "last_seen": "2026-04-27T20:41:16.431427"
+  },
+  "solnce": {
+    "hls": [],
+    "dash": [],
+    "drm": false,
+    "hosts": [
+      "68b27.telecid.ru",
+      "player.mediavitrina.ru",
+      "stat-analytics.mediavitrina.ru",
+      "static-api.mediavitrina.ru",
+      "staticmv.mediavitrina.ru",
+      "tns-counter.ru",
+      "vitrina.getshop.tv",
+      "vitrina.tv",
+      "vitv.telecomid.ru"
+    ],
+    "last_seen": "2026-04-27T20:41:40.452854"
+  },
+  "subbota": {
+    "hls": [
+      "https://edge01d.mediavitrina.ru/hls-livef8/subbota/index.m3u8?token=v2.pwyyFGMvY6dSCIdQdtRmkPXCLqHeAJNcpBHWU9q72QE.6AcQhRBJCdmad07swGePQuWMBQ624QhQvbUZpEIGbqQ.1777927300.8bfbe39dd808a1097e17e37a9a0cc867"
+    ],
+    "dash": [],
+    "drm": true,
+    "hosts": [
+      "68b27.telecid.ru",
+      "edge01d.mediavitrina.ru",
+      "media.mediavitrina.ru",
+      "player.mediavitrina.ru",
+      "stat-analytics.mediavitrina.ru",
+      "static-api.mediavitrina.ru",
+      "vitrina.tv",
+      "vitv.telecomid.ru"
+    ],
+    "last_seen": "2026-04-27T20:41:48.143943"
+  },
+  "1tvch": {
+    "hls": [],
+    "dash": [],
+    "drm": false,
+    "hosts": [
+      "68b27.telecid.ru",
+      "beat.vitrinabeat.ru",
+      "mc.yandex.ru",
+      "media.mediavitrina.ru",
+      "player.mediavitrina.ru",
+      "stat-analytics.mediavitrina.ru",
+      "static-api.mediavitrina.ru",
+      "staticmv.mediavitrina.ru",
+      "vitv.telecomid.ru"
+    ],
+    "last_seen": "2026-04-27T20:38:43.227247"
+  },
+  "carusel": {
+    "hls": [],
+    "dash": [],
+    "drm": false,
+    "hosts": [
+      "68b27.telecid.ru",
+      "beat.vitrinabeat.ru",
+      "player.mediavitrina.ru",
+      "stat-analytics.mediavitrina.ru",
+      "static-api.mediavitrina.ru",
+      "vitv.telecomid.ru"
+    ],
+    "last_seen": "2026-04-27T20:39:38.384825"
+  },
+  "friday": {
+    "hls": [
+      "https://edge02r.mediavitrina.ru/hls-livef7/friday/index.m3u8?token=v2.zoCVla-37I3Yt-8RQ5HQISoeDU-XJrJ2P4sHTSpuZUM.RZkhIDo3GfwQ5pa6h74kI2ztcHNG11C4Vzlq4Ac60dk.1777927236.98f0e64c52bcea5b98504324f8c5970c"
+    ],
+    "dash": [],
+    "drm": true,
+    "hosts": [
+      "68b27.telecid.ru",
+      "beat.vitrinabeat.ru",
+      "edge02r.mediavitrina.ru",
+      "media.mediavitrina.ru",
+      "player.mediavitrina.ru",
+      "stat-analytics.mediavitrina.ru",
+      "static-api.mediavitrina.ru",
+      "vitrina.getshop.tv",
+      "vitv.telecomid.ru"
+    ],
+    "last_seen": "2026-04-27T20:40:44.084145"
+  },
+  "tvzvezda": {
+    "hls": [],
+    "dash": [],
+    "drm": false,
+    "hosts": [
+      "68b27.telecid.ru",
+      "beat.vitrinabeat.ru",
+      "player.mediavitrina.ru",
+      "stat-analytics.mediavitrina.ru",
+      "static-api.mediavitrina.ru",
+      "vitv.telecomid.ru",
+      "yandex.ru"
+    ],
+    "last_seen": "2026-04-27T20:40:51.104183"
+  },
+  "ctclove": {
+    "hls": [],
+    "dash": [],
+    "drm": false,
+    "hosts": [
+      "dmg.digitaltarget.ru",
+      "media.mediavitrina.ru",
+      "stat-analytics.mediavitrina.ru",
+      "vitrina.getshop.tv",
+      "vitv.telecomid.ru"
+    ],
+    "last_seen": "2026-04-27T20:41:17.956164"
+  }
+}

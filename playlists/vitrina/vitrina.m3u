@@ -1,0 +1,109 @@
+#EXTM3U
+#SOURCE: vitrina.tv
+#DATE: 2026-05-20T06:07:00.841683Z
+#TOTAL_CHANNELS: 25
+
+#EXTINF:-1 tvg-id="che" tvg-name="ЧЕ" group-title="Vitrina",ЧЕ
+#EXTVLCOPT:http-referrer=https://vitrina.tv/
+https://edge01d.mediavitrina.ru/hls-livef6/ctc-che/index.m3u8?token=v2.G_o-khxJtcB73ake3i1gl5hYbjxwViqT8_fyCkY3J-w.RBPaEV9l6WCam1AVODbPptgpoq9NFKDAOHXmVMXI6_Q.1779861893.1833b97ecf628669d6907bc028ba8f54
+
+#EXTINF:-1 tvg-id="1tvch" tvg-name="Первый канал" group-title="Vitrina",Первый канал
+#EXTVLCOPT:http-referrer=https://vitrina.tv/
+https://edge01d.mediavitrina.ru/hls-livef6/1tv/index.m3u8?token=v2.AbTCPDMpMKmyHEjGDZMLdLzLysBTt8bUds2TIdN-ViQ.6imuHWeC2I7ZOK-IRp-VIDDDI8o_HZumjO6spz_HGpk.1779861896.d4677a1571a7b601dce32de8945f3511
+
+#EXTINF:-1 tvg-id="russia1" tvg-name="Россия 1" group-title="Vitrina",Россия 1
+#EXTVLCOPT:http-referrer=https://vitrina.tv/
+https://edge02r.mediavitrina.ru/hls-livef5/russia1/index.m3u8?token=v2.zv4ljmkIeYYv1maDaJ64wxf1HYFn9cP8VKLN1f12CC4.w9bGXOrauOuiTOfGZ0Mdm_2IuHGZNlr3tFxLdrA8ylo.1779861902.c6a02b7c0b3e6b1cd685f0994aa65de8
+
+#EXTINF:-1 tvg-id="matchtv" tvg-name="Матч ТВ" group-title="Vitrina",Матч ТВ
+#EXTVLCOPT:http-referrer=https://vitrina.tv/
+https://edge05p.mediavitrina.ru/hls-livef5/matchtv/index.m3u8?token=v2.si73swu5EBKyLx6-YTnq8Ll1107CP6H0A-9KPjSO7I4.vBf9kbQGJ6LBCtWQ-UbjfMS9RiqyBH2CSbXOXZQY4vs.1779861907.e3cf477b731716e550cfe108a35f1f5b
+
+#EXTINF:-1 tvg-id="ntv" tvg-name="НТВ" group-title="Vitrina",НТВ
+#EXTVLCOPT:http-referrer=https://vitrina.tv/
+https://edge01d.mediavitrina.ru/hls-livef6/ntv_msk/index.m3u8?token=v2.Iwe3mb3eMLuA2eAx_MsNaPFgIXIM8CztCuO5MtAhmMU.fxBjUld5vO9uj-WoQvs7XIz2-6EqyZ_0Y4suCRV58n0.1779861912.2d140d5067542d14751f82c74dcc0d37
+
+#EXTINF:-1 tvg-id="5tv" tvg-name="Пятый канал" group-title="Vitrina",Пятый канал
+#EXTVLCOPT:http-referrer=https://vitrina.tv/
+https://edge02r.mediavitrina.ru/hls-livef8/5tv/index.m3u8?token=v2.-FW8Fzn6H338fmIknSyru5z1O6hD3BBbagacQuSy3Qc.yoXGdEPp5o2msxZKnzj4iYLh3argLcHbHg6KK4xNSns.1779861917.f1756fcd20c3974694c982cf5cd0f2e9
+
+#EXTINF:-1 tvg-id="kultura" tvg-name="Культура" group-title="Vitrina",Культура
+#EXTVLCOPT:http-referrer=https://vitrina.tv/
+https://edge02r.mediavitrina.ru/hls-livef7/russiak/index.m3u8?token=v2.n6cgBhKQyGAj55cug96rc8E2eGgt4Gv3ZKOdo26ccK0.uC2p2daLdZ77puSsIA-o0gT8pxHL27PoI-Ph3Jo4F3Y.1779861922.ab58ebbeab728d7801e30105d7b4813b
+
+#EXTINF:-1 tvg-id="russia24" tvg-name="Россия 24" group-title="Vitrina",Россия 24
+#EXTVLCOPT:http-referrer=https://vitrina.tv/
+https://edge01d.mediavitrina.ru/hls-livef5/russia24/index.m3u8?token=v2.izE4moaOM8rmK3mvz2bcN_6b2xv04kU93QbRk3-Unnc.2Prpkt9SDnAQaHtClelAyB8LxQYdH15ktSp9ATegpAg.1779861928.d175b41ce3952c19a83cab336cfa6163
+
+#EXTINF:-1 tvg-id="carusel" tvg-name="Карусель" group-title="Vitrina",Карусель
+#EXTVLCOPT:http-referrer=https://vitrina.tv/
+https://edge02p.mediavitrina.ru/hls-livef8/karusel/index.m3u8?token=v2.urHxAnb5yUS_JWQIQ4H0kWAiJjR3E6G2J4IdU8TANvk.RmY_qmCzPM-rHoipLUnME8fDHFehCC-eug1lS9O_t1s.1779861933.1c21967b9803932974b7d7a86b8741e0
+
+#EXTINF:-1 tvg-id="otr" tvg-name="ОТР" group-title="Vitrina",ОТР
+#EXTVLCOPT:http-referrer=https://vitrina.tv/
+https://edge03d.mediavitrina.ru/hls-livef5/otr_0/index.m3u8?token=v2.6OoMlDLrZQfRyBcgDLbU9GunZSILdGpuQKiIpXORVvI.63GbJSuPQbWOxSq8Nl2mPg1TpmOGopBobo6L3c766m4.1779861938.c69bf44f44bb5c420ccd58786c00892f
+
+#EXTINF:-1 tvg-id="tvc" tvg-name="ТВЦ" group-title="Vitrina",ТВЦ
+#EXTVLCOPT:http-referrer=https://vitrina.tv/
+https://edge03p.mediavitrina.ru/hls-livef6/tvc/index.m3u8?token=v2.O2Fw12JohoQF8EdklEaiRMurbeZn1jRQeptDNF3pHsU.wLbpqxH4zA9LBZzZKzgFW04obkayGE_QYJqMooD9uYk.1779861944.571ea9e4cb3a6a1a550084e4242a2375
+
+#EXTINF:-1 tvg-id="rentv" tvg-name="РЕН ТВ" group-title="Vitrina",РЕН ТВ
+#EXTVLCOPT:http-referrer=https://vitrina.tv/
+https://edge02r.mediavitrina.ru/hls-livef5/ren-tv/index.m3u8?token=v2.CtcBhpASzBnnY7HcZFlJVWe_9qrHsy_u5_yXlD8QjiM.A-XdbBxydOYSBax92RNcYZoMo8Y_D8yGbCrR6muQXkY.1779861948.0ab37033a98773187c217e6383b80998
+
+#EXTINF:-1 tvg-id="spas" tvg-name="СПАС" group-title="Vitrina",СПАС
+#EXTVLCOPT:http-referrer=https://vitrina.tv/
+https://edge03p.mediavitrina.ru/hls-livef5/spas/index.m3u8?token=v2.WBu0_BFK43f_2CZj9Z7RThvsLclDkcQYZe9lKKfkroE.x-mSZ2LoqV4KyblJQ5QyycDXl3CJUQNNrF9R7qfhWNU.1779861954.6aef5e5831fcb0dd067e6e579cab75f2
+
+#EXTINF:-1 tvg-id="ctc" tvg-name="СТС" group-title="Vitrina",СТС
+#EXTVLCOPT:http-referrer=https://vitrina.tv/
+https://edge01p.mediavitrina.ru/hls-livef6/ctc/index.m3u8?token=v2.kaqdfZR-IBUY-PpJkOo4K81L4D9KWAP_1506-T4ek9M.EPJDTHTTEZVyRxt_rrY8b1Iml-JVcqYdPwkXDh0KAuQ.1779861959.7fe0c6762bc9d855b30c4aa9fc693744
+
+#EXTINF:-1 tvg-id="dom" tvg-name="Домашний" group-title="Vitrina",Домашний
+#EXTVLCOPT:http-referrer=https://vitrina.tv/
+https://edge05p.mediavitrina.ru/hls-livef5/ctc-dom/index.m3u8?token=v2.JU8j_5rhgWm_EiSMszKs2zkrb3QnSTpZFCO8L-j9SSg.SojNjj0XAK_1SHyv0pmcpUWS3ISRrfp-7kZwNceY9wQ.1779861964.c6bd5261a8b2e4970dcf74a390fa33d4
+
+#EXTINF:-1 tvg-id="tv3" tvg-name="ТВ-3" group-title="Vitrina",ТВ-3
+#EXTVLCOPT:http-referrer=https://vitrina.tv/
+https://edge04p.mediavitrina.ru/hls-livef8/tv3/index.m3u8?token=v2.aUbppZmPduwA7K14HUEs4_D3tzPdXeNKyq5MNnr1tw0.3NeMx341H38zRxBYMo5VMB-2s6PGh-yF3tBW6H2eBZ0.1779861969.5d4b5cacdfaa79f3ea59f6c19557be51
+
+#EXTINF:-1 tvg-id="friday" tvg-name="Пятница" group-title="Vitrina",Пятница
+#EXTVLCOPT:http-referrer=https://vitrina.tv/
+https://edge01p.mediavitrina.ru/hls-livef7/friday/index.m3u8?token=v2.jv9ayzpVudjqrdcbrOK2jxBXdcjmcEnYPhjYpzMxfIM.v02jvgG0ebCwTiGZRrTySB3csd7_bkdXOBxULE7aSdo.1779861974.b0f505ee8380371665fdcd4d4b8d952c
+
+#EXTINF:-1 tvg-id="tvzvezda" tvg-name="Звезда" group-title="Vitrina",Звезда
+#EXTVLCOPT:http-referrer=https://vitrina.tv/
+https://edge03r.mediavitrina.ru/hls-livef7/zvezda0/index.m3u8?token=v2.0al2mf83S3YhLhlhWIVRuuDYqYkDvC6qMoFHTcaF1hA.GiYFMGURxW_LPZFXJxX9UCb74Tikhzb58aAhAvo4vug.1779861980.01adc45886ec85ac5d2c3e018a2bb9c6
+
+#EXTINF:-1 tvg-id="mir" tvg-name="МИР" group-title="Vitrina",МИР
+#EXTVLCOPT:http-referrer=https://vitrina.tv/
+https://edge03p.mediavitrina.ru/hls-livef7/mir/index.m3u8?token=v2.af_Qn__XgqpW20hl1DZyqt_Ldgob45aDiQXHuEmJhWw.FlesL-Q04Tw3Q_3FltM-HqU42nI2A_jpg6om-2w7zWo.1779861985.c9bfa1f7469ae41640788e0d4fa0d0e3
+
+#EXTINF:-1 tvg-id="tnt" tvg-name="ТНТ" group-title="Vitrina",ТНТ
+#EXTVLCOPT:http-referrer=https://vitrina.tv/
+https://edge02r.mediavitrina.ru/hls-livef8/tnt/index.m3u8?token=v2.uex5XvXC0V_N3JtuqZNXk5AoXYDlKKnEpzAVcCieLak.YgZ-MlBDzNf_FQsnd6k5-eP30InzZ-uk_ikCB0oDPu0.1779861990.f791d4775a16ef1afd826d7cc0c11502
+
+#EXTINF:-1 tvg-id="muztv" tvg-name="МУЗ-ТВ" group-title="Vitrina",МУЗ-ТВ
+#EXTVLCOPT:http-referrer=https://vitrina.tv/
+https://edge02r.mediavitrina.ru/hls-livef6/muztv/index.m3u8?token=v2.0ohVOrCvpSIQtpYZ5X34eA5tlZt5mQD2wql6oq6MSOg.ndwMFjdEaDypywlTH7T2B0wJsbVBDFIYHXevfsb2S-o.1779861995.2f1c65cb6be68b4cc265b2a62706a174
+
+#EXTINF:-1 tvg-id="ctclove" tvg-name="СТС Love" group-title="Vitrina",СТС Love
+#EXTVLCOPT:http-referrer=https://vitrina.tv/
+https://edge02r.mediavitrina.ru/hls-livef5/ctc-love/index.m3u8?token=v2.Hi-__wXotPV6j1Q49GFKlrT-ghonR7qvXDqSrRo4KNA.DklvTwj549UjqyeSqoJPYKITt1SwPnNzEexnscf-1rI.1779862001.b4e041d59a2ead52153976a1616d09cf
+
+#EXTINF:-1 tvg-id="u" tvg-name="Ю" group-title="Vitrina",Ю
+#EXTVLCOPT:http-referrer=https://vitrina.tv/
+#KODIPROP:inputstreamaddon=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=dash
+https://edge01d.mediavitrina.ru/dash-livef5/yu/index.mpd?token=v2.VKf86qiChe3CDnSyCZJwLeAHUavNQigc9zb6A8B0Gu8.ojAGDbeWa6rLOn1Wctb5qOEG3yNgzk2L_a1Jx8BDHGc.1779862005.268ad39984087eaf2510f844b2c20270
+
+#EXTINF:-1 tvg-id="solnce" tvg-name="Солнце" group-title="Vitrina",Солнце
+#EXTVLCOPT:http-referrer=https://vitrina.tv/
+#KODIPROP:inputstreamaddon=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=dash
+https://edge02r.mediavitrina.ru/dash-livef5/solntse/index.mpd?token=v2.B-GTHYEArxma-7cmS7-01j2kL5uISWtNan8oshXJviM.l7hy6er5f7TSHTjCQ6xCZJaQ9xSBrLBbuvfZhM1x8lI.1779862011.72f976dff42e4b3b468f7af3c271e292
+
+#EXTINF:-1 tvg-id="subbota" tvg-name="Суббота" group-title="Vitrina",Суббота
+#EXTVLCOPT:http-referrer=https://vitrina.tv/
+https://edge05p.mediavitrina.ru/hls-livef8/subbota/index.m3u8?token=v2.3y0cFztY8lt_FSLppoL39qxNzUST9_Gl8Pkq2qAjee8._IxwkgPGuQxrRz6enPI0qSSpBPdu8rCmgq-pBY57dAI.1779862016.d4925a62f944f92f4e6dc3c7babebaa3
+

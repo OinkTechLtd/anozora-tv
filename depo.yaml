@@ -1,0 +1,88 @@
+name: Sniffer
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ========== ВИТРИНА (ВСЕГДА) ==========
+  vitrina:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITVERSE_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Playwright & Deps
+        run: |
+          pip install --no-cache-dir playwright
+          playwright install chromium
+          playwright install-deps chromium
+
+      - name: Run Vitrina Sniffer
+        run: python sniffer_vitrina.py
+
+      - name: Commit and Push Vitrina
+        run: |
+          git config --local user.email "bot@sniffer.local"
+          git config --local user.name "Sniffer Bot"
+          git add playlists/vitrina/
+
+          if git diff --staged --quiet; then
+            echo "Vitrina: нет изменений"
+          else
+            git commit -m "🔁 Vitrina: $(TZ='Europe/Moscow' date +'%Y-%m-%d %H:%M')"
+            git pull --rebase origin ${{ github.ref_name }} || true
+            git push origin HEAD:${{ github.ref_name }}
+            echo "✅ Vitrina запушено"
+          fi
+
+  # ========== RUTUBE (ТОЛЬКО ВРУЧНУЮ) ==========
+  rutube:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    if: github.event_name == 'workflow_dispatch'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITVERSE_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Playwright & Deps
+        run: |
+          pip install --no-cache-dir playwright
+          playwright install chromium
+          playwright install-deps chromium
+
+      - name: Run RuTube Sniffer
+        run: python sniffer_others.py
+
+      - name: Commit and Push RuTube
+        run: |
+          git config --local user.email "bot@sniffer.local"
+          git config --local user.name "Sniffer Bot"
+          git add playlists/rutube/
+
+          if git diff --staged --quiet; then
+            echo "RuTube: нет изменений"
+          else
+            git commit -m "🔁 RuTube: $(TZ='Europe/Moscow' date +'%Y-%m-%d %H:%M')"
+            git pull --rebase origin ${{ github.ref_name }} || true
+            git push origin HEAD:${{ github.ref_name }}
+            echo "✅ RuTube запушено"
+          fi
