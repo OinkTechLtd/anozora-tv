@@ -1,0 +1,147 @@
+name: FlexVideo
+
+on:
+  push:
+    branches: [main, master]
+  schedule:
+    - cron: "0 */7 * * *" # Запуск каждые 7 часов
+  workflow_dispatch: # Ручной запуск
+
+jobs:
+  vitrina:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    outputs:
+      vitrina_count: ${{ steps.count_vitrina.outputs.count }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITVERSE_TOKEN }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install playwright
+          python -m playwright install chromium
+
+      - name: Run Vitrina Sniffer
+        run: python sniffer_vitrina.py
+
+      - name: Commit Vitrina results
+        run: |
+          git config --global user.email "bot@gitverse.ru"
+          git config --global user.name "Sniffer Bot"
+          mkdir -p playlists/vitrina
+          git add playlists/vitrina/ VITRINA_URL.txt
+
+          if git diff --cached --quiet; then
+            echo "No Vitrina changes"
+          else
+            git commit -m "Vitrina $(date +'%Y-%m-%d %H:%M:%S')" || true
+            git pull --rebase origin ${{ github.ref_name }} || true
+            git push origin HEAD:${{ github.ref_name }} || true
+          fi
+
+      - name: Count Vitrina channels
+        id: count_vitrina
+        run: |
+          if [ -f playlists/vitrina/vitrina.m3u ]; then
+            COUNT=$(grep -c "^#EXTINF" playlists/vitrina/vitrina.m3u)
+            echo "count=$COUNT" >> $GITHUB_OUTPUT
+          else
+            echo "count=0" >> $GITHUB_OUTPUT
+          fi
+
+  rutube:
+    needs: vitrina
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    outputs:
+      rutube_count: ${{ steps.count_rutube.outputs.count }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITVERSE_TOKEN }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies (skip Playwright if already installed)
+        run: |
+          pip install --upgrade pip
+          pip install playwright || true
+
+      - name: Run Rutube Sniffer
+        run: python sniffer_rutube.py
+
+      - name: Commit Rutube results
+        run: |
+          git config --global user.email "bot@gitverse.ru"
+          git config --global user.name "Sniffer Bot"
+          mkdir -p playlists/rutube
+          git add playlists/rutube/ RUTUBE_URL.txt
+
+          if git diff --cached --quiet; then
+            echo "No RuTube changes"
+          else
+            git commit -m "RuTube $(date +'%Y-%m-%d %H:%M:%S')" || true
+            git pull --rebase origin ${{ github.ref_name }} || true
+            git push origin HEAD:${{ github.ref_name }} || true
+          fi
+
+      - name: Count Rutube channels
+        id: count_rutube
+        run: |
+          if [ -f playlists/rutube/rutube.m3u ]; then
+            COUNT=$(grep -c "^#EXTINF" playlists/rutube/rutube.m3u)
+            echo "count=$COUNT" >> $GITHUB_OUTPUT
+          else
+            echo "count=0" >> $GITHUB_OUTPUT
+          fi
+
+  readme:
+    needs: [vitrina, rutube]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository (final)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITVERSE_TOKEN }}
+
+      - name: Generate README with stats and links using script
+        run: |
+          python generate_readme.py \
+            --vitrina-count ${{ needs.vitrina.outputs.vitrina_count }} \
+            --rutube-count ${{ needs.rutube.outputs.rutube_count }} \
+            --repo ${{ github.repository }} \
+            --branch ${{ github.ref_name }}
+
+      - name: Commit README (always)
+        run: |
+          git config --global user.email "bot@gitverse.ru"
+          git config --global user.name "Sniffer Bot"
+
+          git add README.md || true
+
+          # Всегда делаем коммит, чтобы обновить дату в README, даже если каналы не изменились.
+          git commit -m "README update $(date +'%Y-%m-%d %H:%M:%S')" || true
+
+          # Попытка пуша. Если не получится (например, нет изменений), не прерываем воркфлоу.
+          git pull --rebase origin ${{ github.ref_name }} || true
+          git push origin HEAD:${{ github.ref_name }} --force || true
+
